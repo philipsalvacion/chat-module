@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { Connect } from 'react-redux';
-import { connect } from 'net';
+import { connect } from 'react-redux';
+import * as ChatActions from './store/actions/chatActions';
 
 class App extends React.Component {
   render() {
@@ -39,8 +39,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  setupSocket: () => {
+    dispatch(ChatActions.setupSocket());
+  }
 })
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
